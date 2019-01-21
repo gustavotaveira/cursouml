@@ -1,7 +1,7 @@
 package com.udemy.cursouml;
 
 import com.udemy.cursouml.domain.Categoria;
-import com.udemy.cursouml.models.Produto;
+import com.udemy.cursouml.domain.Produto;
 import com.udemy.cursouml.repositories.CategoriaRepository;
 import com.udemy.cursouml.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +22,7 @@ public class CursoumlApplication implements CommandLineRunner {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(CursoumlApplication.class, args);
     }
@@ -42,7 +43,7 @@ public class CursoumlApplication implements CommandLineRunner {
         p3.getCategorias().addAll(Arrays.asList(cat1));
 
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
-        produtoRepository.saveAll(Arrays.asList(p1,p2, p3));
+        produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
     }
 }
 

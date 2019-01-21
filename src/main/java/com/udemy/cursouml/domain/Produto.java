@@ -1,6 +1,6 @@
-package com.udemy.cursouml.models;
+package com.udemy.cursouml.domain;
 
-import com.udemy.cursouml.domain.Categoria;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,9 +17,10 @@ public class Produto implements Serializable {
     private String nome;
     private Double preco;
 
+    @JsonBackReference
     @ManyToMany
-    @JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name="produto_id"),
-        inverseJoinColumns = @JoinColumn(name = "categoria_id")
+    @JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"),
+            inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
     private List<Categoria> categorias = new ArrayList<>();
 
@@ -45,6 +46,9 @@ public class Produto implements Serializable {
 
     public void setCategorias(List<Categoria> categorias) {
         this.categorias = categorias;
+    }
+
+    public Produto() {
     }
 
     public Produto(Integer id, String nome, Double preco) {
