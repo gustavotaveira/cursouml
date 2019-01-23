@@ -1,5 +1,6 @@
 package com.udemy.cursouml.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.udemy.cursouml.domain.enums.TipoCliente;
 
 import javax.persistence.*;
@@ -16,6 +17,9 @@ public class Cliente implements Serializable {
     private String email;
     private String cpfOuCnpj;
     private Integer tipoCliente;
+
+    //Habilita serializacao desse objetos
+    @JsonManagedReference
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
